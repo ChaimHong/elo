@@ -1,9 +1,5 @@
 package elo
 
-import (
-	"lms/lib/assert"
-)
-
 type EloI interface {
 	GetK(float64) float64
 }
@@ -28,10 +24,7 @@ func Elo(data EloI, w, l int16) (winnerN, loserN int16) {
 
 	// 四舍五入 (+0.5)
 	wn := winner + data.GetK(winner)*(1-EWinner) + 0.5
-	assert.True2(wn <= INT16MAX, "the value is too big")
-
 	ln := loser + data.GetK(loser)*(0-Eloser) + 0.5
-	assert.True2(ln <= INT16MAX, "the value is too big")
 
 	return int16(wn), int16(ln)
 }
