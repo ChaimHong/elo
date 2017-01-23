@@ -19,8 +19,8 @@ func (k KStruct) GetK(points float64) float64 {
 	return 16
 }
 
-func TestElo(t *testing) {
+func TestElo(t *testing.T) {
 	var winner, loser int16 = 1200, 1000
-	wp, lp := Elo(KI, 1200, 1000)
+	wp, lp := Elo(KI, winner, loser)
 	fmt.Println(wp, lp)
 }
